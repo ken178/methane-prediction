@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methane Emission Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Overall climate-themed background */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('./livestock.jpg'); /* Light sky blue background for a clean, fresh feel */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Style the form container */
+        .container {
+            max-width: 1200px; /* Maximum width for a broader layout */
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background for contrast */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a clean look */
+        }
+        h1 {
+            text-align: center;
+            color: #006400; /* Dark green to reflect sustainability and environment */
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            padding-top: 30px;
+            margin-top: 20px;
+            
+        }
+
+        h2 {
+            text-align: center;
+            color: #006400; /* Dark green to reflect sustainability and environment */
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            padding-top: 30px;
+            margin-top: 20px;
+            
+        }
+
+        /* Flexbox layout to make the form broader */
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Horizontal and vertical gap between form fields */
+        }
+
+        /* Style individual input groups */
+        .input-group {
+            flex: 1 1 calc(33.33% - 20px); /* Each field takes up about one-third of the row */
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px; /* Vertical space between rows */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #006400; /* Green for labels to match environmental theme */
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9fafb; /* Light background to make input fields stand out */
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            border-color: #2e8b57; /* Change border to sea green on focus */
+        }
+
+        /* Button Styling */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #32CD32; /* Lime green for a positive call-to-action */
+            color: #fff;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #228B22; /* Darker green on hover */
+        }
+
+        /* Additional styling to enhance the climate-friendly theme */
+        .input-group label:before {
+            content: "🌿"; /* Small nature icon before label */
+            margin-right: 8px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .input-group {
+                flex: 1 1 calc(50% - 20px); /* On smaller screens, fields take half the width */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .input-group {
+                flex: 1 1 100%; /* On very small screens, fields take full width */
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Methane Predictor App<p> </h1>       
+            <h2>Methane Emission Analysis and Prediction Tool</h2>
+        
+        <form id="methane-form">
+            <div class="form-grid">
+                <!-- Intake and environmental fields arranged in a grid -->
+                <div class="input-group">
+                    <label for="feed_intake">Type of feed intake</label>
+                    <input type="text" id="feed_intake" name="feed_intake" required>
+                </div>
+                <div class="input-group">
+                    <label for="feed_intake_grass">Grass Feed Intake (kg):</label>
+                    <input type="number" step="0.01" id="feed_intake_grass" name="feed_intake_grass">
+                </div>
+                <div class="input-group">
+                    <label for="feed_intake_grain">Grain Feed Intake (kg):</label>
+                    <input type="number" step="0.01" id="feed_intake_grain" name="feed_intake_grain">
+                </div>
+
+                <div class="input-group">
+                    <label for="temperature">Temperature (°C):</label>
+                    <input type="number" step="0.01" id="temperature" name="temperature" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="humidity">Humidity (%):</label>
+                    <input type="number" step="0.5" id="humidity" name="humidity" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="age">Age of the cow (years):</label>
+                    <input type="number" step="0.01" id="age" name="age" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="water_intake">Water Intake (liters):</label>
+                    <input type="number" step="0.01" id="water_intake" name="water_intake">
+                </div>
+
+                <div class="input-group">
+                    <label for="altitude">Altitude (meters):</label>
+                    <input type="number" step="0.01" id="altitude" name="altitude">
+                </div>
+
+                <div class="input-group">
+                    <label for="animal_weight">Animal Weight (kg):</label>
+                    <input type="number" step="0.01" id="animal_weight" name="animal_weight">
+                </div>
+
+                <div class="input-group">
+                    <label for="activity_level">Activity Level (hours/day):</label>
+                    <input type="number" step="0.01" id="activity_level" name="activity_level">
+                </div>
+                <div class="input-group">
+                    <label for="sex">Animal sex: </label>
+                    <input type="text" id="sex" name="Sex" required>
+                </div>
+                <div class="input-group">
+                    <label for="windspeed">windspeed(M/S): </label>
+                    <input type="number" step="2" id="windspeed" name="windspeed" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Predict Methane Emission</button>
+        </form>
+    </div>
+
+    <script>
+        // Add event listener for form submission
+document.getElementById('methane-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Gather form data
+    const formData = new FormData(event.currentTarget);
+
+    // Create the data object from form values
+    const data = {
+        feed_intake: formData.get('feed_intake'),
+        feed_intake_grass: formData.get('feed_intake_grass'),
+        feed_intake_grain: formData.get('feed_intake_grain'),
+        temperature: formData.get('temperature'),
+        humidity: formData.get('humidity'),
+        age: formData.get('age'),
+        water_intake: formData.get('water_intake'),
+        altitude: formData.get('altitude'),
+        animal_weight: formData.get('animal_weight'),
+        activity_level: formData.get('activity_level')
+    };
+
+    // Send data to the server using the fetch API
+    fetch('/predict', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Use this if Django renders the CSRF token as a hidden input field
+        },
+        body: JSON.stringify(data) // Convert the data object to JSON format
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Parse the response body as JSON
+    })
+    .then(result => {
+        console.log('Prediction Result:', result);
+        // Display the prediction result to the user
+        document.getElementById('result').textContent = 'Methane Prediction: ' + result.result;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Display an error message to the user
+        document.getElementById('result').textContent = 'An error occurred. Please try again.';
+    });
+});
+
+    </script>
+</body>
+</html>
